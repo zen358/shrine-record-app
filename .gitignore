@@ -22,3 +22,6 @@
 
 # OS
 .DS_Store
+
+# Rails credentials
+config/master.key
