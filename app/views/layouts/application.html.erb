@@ -23,7 +23,32 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column min-vh-100">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container">
+          <%= link_to "参拝記録アプリ", root_path, class: "navbar-brand" %>
+          <div class="ms-auto d-flex gap-2">
+            <%= link_to "新規登録", new_user_path, class: "btn btn-primary btn-sm" %>
+            <%= link_to "ログイン", new_session_path, class: "btn btn-outline-primary btn-sm" %>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow-1">
+      <%= yield %>
+    </main>
+
+    <footer class="border-top py-3 mt-5">
+      <div class="container text-muted small">
+        © <%= Time.current.year %> 参拝記録アプリ
+      </div>
+    </footer>
   </body>
+
+
+  <footer>
+  <small>&copy: Shrine Record App</small>
+  </footer>
 </html>
