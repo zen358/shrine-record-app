@@ -3,7 +3,7 @@ class ShrineRecordsController < ApplicationController
   # ログインユーザーのみアクセス可能
   before_action :authenticate_user!
 
-  # 参拝記録一覧（仮実装）
+  # 参拝記録一覧
   def index
     @shrine_records = current_user.shrine_records.order(visited_on: :desc)
   end
