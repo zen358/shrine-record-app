@@ -1,0 +1,70 @@
+<%# 参拝記録 新規作成画面 %>
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%# フォームカード %>
+      <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+          <h4 class="mb-0">参拝記録を登録</h4>
+        </div>
+        <div class="card-body">
+          <%# エラーメッセージの表示 %>
+          <% if @shrine_record.errors.any? %>
+            <div class="alert alert-danger">
+              <h5 class="alert-heading">
+                <%= @shrine_record.errors.count %>件のエラーがあります
+              </h5>
+              <ul class="mb-0">
+                <% @shrine_record.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <%= form_with model: @shrine_record, local: true do |f| %>
+            <%# 神社名（必須） %>
+            <div class="mb-3">
+              <%= f.label :shrine_name, "神社名", class: "form-label" %>
+              <span class="badge bg-danger">必須</span>
+              <%= f.text_field :shrine_name, class: "form-control", placeholder: "例：伊勢神宮" %>
+            </div>
+
+            <%# 御祭神 %>
+            <div class="mb-3">
+              <%= f.label :deity, "御祭神", class: "form-label" %>
+              <%= f.text_field :deity, class: "form-control", placeholder: "例：天照大御神" %>
+            </div>
+
+            <%# 参拝日（必須） %>
+            <div class="mb-3">
+              <%= f.label :visited_on, "参拝日", class: "form-label" %>
+              <span class="badge bg-danger">必須</span>
+              <%= f.date_field :visited_on, class: "form-control", value: Date.today %>
+            </div>
+
+            <%# お願いごと %>
+            <div class="mb-3">
+              <%= f.label :wish, "お願いごと", class: "form-label" %>
+              <%= f.text_area :wish, class: "form-control", rows: 3, placeholder: "参拝時にお願いしたこと" %>
+            </div>
+
+            <%# メモ %>
+            <div class="mb-3">
+              <%= f.label :memo, "メモ", class: "form-label" %>
+              <%= f.text_area :memo, class: "form-control", rows: 3, placeholder: "自由にメモを記入" %>
+            </div>
+
+            <hr class="my-4">
+
+            <%# ボタン %>
+            <div class="d-flex gap-2">
+              <%= f.submit "登録する", class: "btn btn-success" %>
+              <%= link_to "キャンセル", shrine_records_path, class: "btn btn-outline-secondary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # プロフィールページ（単数リソース：自分のプロフィールのみ扱うため）
   resource :profile, only: [ :show, :edit, :update ]
 
+  # 参拝記録（複数リリース）
+  resources :shrine_records
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

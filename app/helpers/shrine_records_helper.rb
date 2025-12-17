@@ -1,0 +1,2 @@
+module ShrineRecordsHelper
+end
