@@ -1,0 +1,33 @@
+<%# プロフィール表示画面 %>
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%# プロフィールカード %>
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">マイプロフィール</h4>
+        </div>
+        <div class="card-body">
+          <%# ユーザー情報の表示 %>
+          <dl class="row mb-0">
+            <%# ユーザー名 %>
+            <dt class="col-sm-4 text-muted">ユーザー名</dt>
+            <dd class="col-sm-8 fs-5"><%= @user.username %></dd>
+
+            <%# メールアドレス %>
+            <dt class="col-sm-4 text-muted">メールアドレス</dt>
+            <dd class="col-sm-8"><%= @user.email %></dd>
+
+            <%# 登録日 %>
+            <dt class="col-sm-4 text-muted">登録日</dt>
+            <dd class="col-sm-8"><%= @user.created_at.strftime("%Y年%m月%d日") %></dd>
+          </dl>
+        </div>
+        <div class="card-footer bg-light">
+          <%# 編集ボタン %>
+          <%= link_to "プロフィールを編集", edit_profile_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
