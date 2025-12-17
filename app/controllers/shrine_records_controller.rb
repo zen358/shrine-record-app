@@ -2,10 +2,17 @@
 class ShrineRecordsController < ApplicationController
   # ログインユーザーのみアクセス可能
   before_action :authenticate_user!
+  # 個別の参拝記録を取得（show/edit/update/destroyで使用）
+  before_action :set_shrine_record, only: [ :show ]
 
   # 参拝記録一覧
   def index
     @shrine_records = current_user.shrine_records.order(visited_on: :desc)
+  end
+
+  # 参拝記録詳細
+  def show
+    # @shrine_recordはbefore_actionで取得済み
   end
 
   # 新規作成フォーム
@@ -29,6 +36,11 @@ class ShrineRecordsController < ApplicationController
   end
 
   private
+
+  # URLのIDから参拝記録を取得（自分の記録のみ）
+  def set_shrine_record
+    @shrine_record = current_user.shrine_records.find(params[:id])
+  end
 
   # Strong Parameters(許可するパラメータを定義)
   def shrine_record_params

@@ -1,0 +1,69 @@
+<%# 参拝記録詳細 %>
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%# 詳細カード %>
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0"><%= @shrine_record.shrine_name %></h4>
+        </div>
+        <div class="card-body">
+          <%# 参拝情報 %>
+          <dl class="row">
+            <%# 参拝日 %>
+            <dt class="col-sm-3 text-muted">参拝日</dt>
+            <dd class="col-sm-9"><%= @shrine_record.visited_on.strftime("%Y年%m月%d日") %></dd>
+
+            <%# 御祭神 %>
+            <dt class="col-sm-3 text-muted">御祭神</dt>
+            <dd class="col-sm-9">
+              <%= @shrine_record.deity.presence || "（未入力）" %>
+            </dd>
+
+            <%# お願いごと %>
+            <dt class="col-sm-3 text-muted">お願いごと</dt>
+            <dd class="col-sm-9">
+              <% if @shrine_record.wish.present? %>
+                <%= simple_format(@shrine_record.wish) %>
+              <% else %>
+                （未入力）
+              <% end %>
+            </dd>
+
+            <%# メモ %>
+            <dt class="col-sm-3 text-muted">メモ</dt>
+            <dd class="col-sm-9">
+              <% if @shrine_record.memo.present? %>
+                <%= simple_format(@shrine_record.memo) %>
+              <% else %>
+                （未入力）
+              <% end %>
+            </dd>
+
+            <%# 位置情報 %>
+            <% if @shrine_record.latitude.present? && @shrine_record.longitude.present? %>
+              <dt class="col-sm-3 text-muted">位置情報</dt>
+              <dd class="col-sm-9">
+                緯度: <%= @shrine_record.latitude %><br>
+                経度: <%= @shrine_record.longitude %>
+              </dd>
+            <% end %>
+          </dl>
+        </div>
+        <div class="card-footer bg-light">
+          <%# ボタン群 %>
+          <div class="d-flex gap-2 flex-wrap">
+            <%# 編集ボタン（Issue 13で有効化） %>
+            <%= link_to "編集", edit_shrine_record_path(@shrine_record), class: "btn btn-warning" %>
+
+            <%# 削除ボタン（Issue 14で有効化） %>
+            <%= button_to "削除", shrine_record_path(@shrine_record), method: :delete, class: "btn btn-danger", data: { turbo_confirm: "本当に削除しますか？" } %>
+
+            <%# 一覧に戻る %>
+            <%= link_to "一覧に戻る", shrine_records_path, class: "btn btn-outline-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
