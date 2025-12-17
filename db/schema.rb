@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_15_085841) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_17_050744) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "shrine_records", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "deity"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.text "memo"
+    t.string "shrine_name"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.date "visited_on"
+    t.text "wish"
+    t.index ["user_id"], name: "index_shrine_records_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -27,4 +41,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_15_085841) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
+
+  add_foreign_key "shrine_records", "users"
 end
