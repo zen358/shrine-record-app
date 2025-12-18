@@ -3,7 +3,7 @@ class ShrineRecordsController < ApplicationController
   # ログインユーザーのみアクセス可能
   before_action :authenticate_user!
   # 個別の参拝記録を取得（show/edit/update/destroyで使用）
-  before_action :set_shrine_record, only: [ :show, :edit, :update ]
+  before_action :set_shrine_record, only: [ :show, :edit, :update, :destroy ]
 
   # 参拝記録一覧
   def index
@@ -51,6 +51,12 @@ class ShrineRecordsController < ApplicationController
     end
   end
 
+  # 削除処理
+  def destroy
+    @shrine_record.destroy
+    # 削除後は一覧ページへリダイレクト
+    redirect_to shrine_records_path, notice: "参拝記録を削除しました"
+  end
 
   private
 
