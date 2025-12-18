@@ -3,7 +3,7 @@ class ShrineRecordsController < ApplicationController
   # ログインユーザーのみアクセス可能
   before_action :authenticate_user!
   # 個別の参拝記録を取得（show/edit/update/destroyで使用）
-  before_action :set_shrine_record, only: [ :show ]
+  before_action :set_shrine_record, only: [ :show, :edit, :update ]
 
   # 参拝記録一覧
   def index
@@ -34,6 +34,23 @@ class ShrineRecordsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  # 編集フォーム
+  def edit
+    # @shrine_recordはbefore_actionで取得済み
+  end
+
+  # 更新処理
+  def update
+    if @shrine_record.update(shrine_record_params)
+      # 更新成功時は詳細ページへリダイレクト
+      redirect_to @shrine_record, notice: "参拝記録を更新しました"
+    else
+      # 更新失敗時はフォームを再表示
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
 
   private
 

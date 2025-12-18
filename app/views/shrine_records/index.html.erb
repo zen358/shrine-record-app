@@ -1,11 +1,11 @@
-<%# 参拝記録一覧（仮実装） %>
+<%# 参拝記録一覧 %>
 <div class="container py-4">
   <%# ヘッダー部分 %>
   <div class="d-flex justify-content-between align-items-center mb-4">
-  <h2>参拝記録一覧</h2>
-  <%= link_to new_shrine_record_path, class: "btn btn-success" do %>
-    <i class="bi bi-plus-lg"></i> 新規登録
-  <% end %>
+    <h2 class="mb-0">参拝記録一覧</h2>
+    <%= link_to new_shrine_record_path, class: "btn btn-success" do %>
+      新規登録
+    <% end %>
   </div>
 
   <% if @shrine_records.any? %>
@@ -20,34 +20,36 @@
 
               <%# 参拝日 %>
               <p class="card-text text-muted mb-2">
-                <i class="bi bi-calendar-event me-1"></i>
                 <%= record.visited_on.strftime("%Y年%m月%d日") %>
               </p>
 
               <%# 御祭神 %>
               <% if record.deity.present? %>
                 <p class="card-text small">
-                  <span class="text-muted">御祭神 :</span><%= record.deity %>
+                  <span class="text-muted">御祭神：</span><%= record.deity %>
                 </p>
               <% end %>
             </div>
-
-            <%# 件数表示 %>
-            <div class="mt-4 text-muted text-center">
-              全 <%= @shrine_records.count %>件の参拝記録
+            <div class="card-footer bg-transparent">
+              <%# 詳細ボタン %>
+              <%= link_to "詳細を見る", shrine_record_path(record), class: "btn btn-outline-primary btn-sm" %>
             </div>
           </div>
         </div>
       <% end %>
     </div>
+
+    <%# 件数表示 %>
+    <div class="mt-4 text-muted text-center">
+      全 <%= @shrine_records.count %> 件の参拝記録
+    </div>
+
   <% else %>
     <%# 記録がない場合 %>
     <div class="card shadow-sm">
       <div class="card-body text-center py-5">
         <p class="text-muted mb-3">まだ参拝記録がありません。</p>
-        <%= link_to new_shrine_record_path, class: "btn btn-success" do %>
-          <i class="bi bi-plus-lg me-1"></i> 最初の参拝記録を登録する
-        <% end %>
+        <%= link_to "最初の参拝記録を登録する", new_shrine_record_path, class: "btn btn-success" %>
       </div>
     </div>
   <% end %>
