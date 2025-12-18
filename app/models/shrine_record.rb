@@ -3,6 +3,9 @@ class ShrineRecord < ApplicationRecord
   # Userとの関連付け（1人のユーザーが複数の参拝記録を持つ）
   belongs_to :user
 
+  # 画像添付（Active Storage)
+  has_one_attached :photo
+
   # バリデーション
   # 神社名は必須、100文字以内
   validates :shrine_name, presence: true, length: { maximum: 100 }
