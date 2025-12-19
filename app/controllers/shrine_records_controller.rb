@@ -70,6 +70,7 @@ class ShrineRecordsController < ApplicationController
     params.require(:shrine_record).permit(
       :shrine_name,
       :deity,
+      :benefit,
       :visited_on,
       :wish,
       :memo,

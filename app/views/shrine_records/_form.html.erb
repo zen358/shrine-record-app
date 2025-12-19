@@ -27,6 +27,12 @@
     <%= f.text_field :deity, class: "form-control", placeholder: "例：天照大御神" %>
   </div>
 
+  <%# 御利益 %>
+  <div class="mb-3">
+    <%= f.label :benefit, "御利益", class: "form-label" %>
+    <%= f.text_field :benefit, class: "form-control", placeholder: "例：商売繁盛、縁結び" %>
+  </div>
+
   <%# 参拝日（必須） %>
   <div class="mb-3">
     <%= f.label :visited_on, "参拝日", class: "form-label" %>

@@ -16,6 +16,9 @@ class ShrineRecord < ApplicationRecord
   # 御祭神は任意、100文字以内
   validates :deity, length: { maximum: 100 }, allow_blank: true
 
+  # 御利益は任意、100文字以内
+  validates :benefit, length: { maximum: 100 }, allow_blank: true
+
   # お願いごとは任意、500文字以内
   validates :wish, length: { maximum: 500 }, allow_blank: true
 
