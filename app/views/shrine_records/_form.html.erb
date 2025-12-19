@@ -67,6 +67,24 @@
     <% end %>
   </div>
 
+  <%# 位置情報（緯度・経度） %>
+  <div class="mb-3">
+    <label class="form-label">位置情報</label>
+    <div class="row">
+      <%# 緯度入力欄 %>
+      <div class="col-mb-6">
+        <%= f.label :latitude, "緯度", class: "form-label small text-muted" %>
+        <%= f.number_field :latitude, class: "form-control", placeholder: "例：35.6762", step: "any" %>
+      </div>
+      <%# 経度入力欄 %>
+      <div class="col-mb-6">
+        <%= f.label :longitude, "経度", class: "form-label small text-muted" %>
+        <%= f.number_field :longitude, class: "form-control", placeholder: "例：139.6503", step: "any" %>
+      </div>
+    </div>
+    <div class="form-text">Google Mapsなどで確認した緯度・経度を入力できます</div>
+  </div>
+
   <hr class="my-4">
 
   <%# ボタン %>
