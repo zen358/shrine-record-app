@@ -7,6 +7,14 @@
         <div class="card-header bg-primary text-white">
           <h4 class="mb-0"><%= @shrine_record.shrine_name %></h4>
         </div>
+
+        <%# 写真があれば表示 %>
+        <% if @shrine_record.photo.attached? %>
+          <div class="text-center bg-light p-3">
+            <%= image_tag @shrine_record.photo, class: "img-fluid rounded", style: "max-height: 400px;" %>
+          </div>
+        <% end %>
+
         <div class="card-body">
           <%# 参拝情報 %>
           <dl class="row">
@@ -56,7 +64,7 @@
             <%# 編集ボタン（Issue 13で有効化） %>
             <%= link_to "編集", edit_shrine_record_path(@shrine_record), class: "btn btn-warning" %>
 
-            <%# 削除ボタン（Issue 14で有効化） %>
+            <%# 削除ボタン %>
             <%= button_to "削除", shrine_record_path(@shrine_record), method: :delete, class: "btn btn-danger", data: { turbo_confirm: "本当に削除しますか？" } %>
 
             <%# 一覧に戻る %>

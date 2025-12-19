@@ -46,6 +46,21 @@
     <%= f.text_area :memo, class: "form-control", rows: 3, placeholder: "自由にメモを記入" %>
   </div>
 
+  <%# 写真アップロード %>
+  <div class="mb-3">
+    <%= f.label :photo, "写真", class: "form-label" %>
+    <%= f.file_field :photo, class: "form-control", accept: "image/*" %>
+    <div class="form-text">JPEG、PNG形式の画像をアップロードできます</div>
+
+    <%# 既存の画像があれば表示（編集時） %>
+    <% if shrine_record.photo.attached? %>
+      <div class="mt-2">
+        <p class="text-muted small mb-1">現在の画像:</p>
+        <%= image_tag shrine_record.photo, class: "img-thumbnail", style: "max-height: 150px;" %>
+      </div>
+    <% end %>
+  </div>
+
   <hr class="my-4">
 
   <%# ボタン %>

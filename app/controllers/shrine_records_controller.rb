@@ -74,7 +74,8 @@ class ShrineRecordsController < ApplicationController
       :wish,
       :memo,
       :latitude,
-      :longitude
+      :longitude,
+      :photo
     )
   end
 end
