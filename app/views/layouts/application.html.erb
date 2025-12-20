@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Myapp" %></title>
+    <title><%= content_for(:title) || "参拝記録アプリ" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Myapp">
+    <meta name="application-name" content="参拝記録アプリ">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -27,27 +27,36 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <div class="container">
+          <%# ロゴ（ブランド名） %>
           <%= link_to "参拝記録アプリ", root_path, class: "navbar-brand" %>
 
-          <%# ログイン状態に応じてメニューを切り替え %>
-          <div class="ms-auto d-flex gap-2 align-items-center">
-            <% if user_signed_in? %>
-              <%# ログイン済みの場合 %>
-              <%= link_to "参拝一覧", shrine_records_path, class: "btn btn-outline-secondary btn-sm" %>
-              <%= link_to "新規記録", new_shrine_record_path, class: "btn btn-success btn-sm" %>
-              <%= link_to "プロフィール", profile_path, class: "btn btn-outline-secondary btn-sm" %>
-              <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger btn-sm" %>
-            <% else %>
-              <%# 未ログインの場合 %>
-              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary btn-sm" %>
-              <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary btn-sm" %>
-            <% end %>
+          <%# ハンバーガーメニュー（モバイル用トグルボタン） %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="メニューを開く">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <%# ナビゲーションメニュー（折りたたみ対応） %>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto gap-2">
+              <% if user_signed_in? %>
+                <%# ログイン済みの場合 %>
+                <%= link_to "参拝一覧", shrine_records_path, class: "nav-link" %>
+                <%= link_to "新規記録", new_shrine_record_path, class: "btn btn-success btn-sm" %>
+                <%= link_to "プロフィール", profile_path, class: "nav-link" %>
+                <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger btn-sm" %>
+              <% else %>
+                <%# 未ログインの場合 %>
+                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary btn-sm" %>
+                <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary btn-sm" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </nav>
     </header>
 
     <main class="flex-grow-1">
+      <%# フラッシュメッセージ（成功） %>
       <% if notice %>
         <div class="container mt-3">
           <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -56,6 +65,7 @@
           </div>
         </div>
       <% end %>
+      <%# フラッシュメッセージ（エラー） %>
       <% if alert %>
         <div class="container mt-3">
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -68,7 +78,7 @@
     </main>
 
     <footer class="border-top py-3 mt-5">
-      <div class="container text-muted small">
+      <div class="container text-muted small text-center">
         © <%= Time.current.year %> 参拝記録アプリ
       </div>
     </footer>
