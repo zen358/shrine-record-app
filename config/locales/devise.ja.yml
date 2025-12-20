@@ -1,0 +1,38 @@
+ja:
+  devise:
+    shared:
+      links:
+        sign_in: "ログイン"
+        sign_up: "新規登録"
+        forgot_your_password: "パスワードをお忘れですか？"
+        didn_t_receive_confirmation_instructions: "確認メールが届きませんか？"
+        didn_t_receive_unlock_instructions: "ロック解除メールが届きませんか？"
+        sign_in_with_provider: "%{provider}でログイン"
+    sessions:
+      new:
+        sign_in: "ログイン"
+      signed_in: "ログインしました"
+      signed_out: "ログアウトしました"
+      already_signed_out: "既にログアウト済みです"
+    registrations:
+      new:
+        sign_up: "新規登録"
+      signed_up: "アカウントを登録しました"
+      destroyed: "アカウントを削除しました"
+      updated: "アカウント情報を更新しました"
+      update_needs_confirmation: "アカウント情報を変更しました。変更されたメールアドレスの確認のため、確認メールを送信しました。"
+    passwords:
+      new:
+        forgot_your_password: "パスワードをお忘れですか？"
+        send_me_reset_password_instructions: "パスワード再設定メールを送信"
+      send_instructions: "パスワード再設定のメールを送信しました"
+      updated: "パスワードを変更しました"
+      updated_not_active: "パスワードを変更しました"
+      no_token: "このページにはアクセスできません。パスワード再設定メールからアクセスした場合は、URLが正しいかご確認ください。"
+    failure:
+      invalid: "メールアドレスまたはパスワードが正しくありません"
+      unauthenticated: "ログインが必要です"
+      unconfirmed: "メールアドレスの確認が必要です"
+      locked: "アカウントはロックされています"
+      not_found_in_database: "メールアドレスまたはパスワードが正しくありません"
+      timeout: "セッションがタイムアウトしました。もう一度ログインしてください"
