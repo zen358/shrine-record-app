@@ -11,35 +11,35 @@ ja:
         long: "$Y年%m月%d日(%a) %H:%M"
         short: "$m月$d日 %H:%M"
     
-    # ActibeRecordのエラーメッセージ
-    activerecord:
-      errors:
-        messages:
-          blank: "を入力してください"
-          taken: "はすでに使用されています"
-          too-short: "は%{count}文字以上で入力してください"
-          too-long: "は%{count}文字以下で入力してください"
-          invalid: "は不正な値です"
-          confirmation: "と一致しません"
-      # モデル名の日本語化
-      models:
-        user: "ユーザー"
-      # 属性名の日本語化
-      attributes:
-        user:
-          username: "ユーザー名"
-          email: "メールアドレス"
-          password: "パスワード"
-          password_confirmation: "パスワード（確認用）"
-    
-    # Deviseのメッセージ
-    devise:
-      registrations:
-        signed_up: "アカウント登録が完了しました。"
-        updated: "アカウント情報を変更しました。"
-      sessions:
-        signed_in: "ログインしました。"
-        signed_out: "ログアウトしました。"
-      failure:
-        invalid: "メールアドレスまたはパスワードが違います。"
-        unauthenticated: "ログインしてください。"
+  # ActibeRecordのエラーメッセージ
+  activerecord:
+    errors:
+      messages:
+        blank: "を入力してください"
+        taken: "はすでに使用されています"
+        too_short: "は%{count}文字以上で入力してください"
+        too_long: "は%{count}文字以下で入力してください"
+        invalid: "は不正な値です"
+        confirmation: "と一致しません"
+    # モデル名の日本語化
+    models:
+      user: "ユーザー"
+    # 属性名の日本語化
+    attributes:
+      user:
+        username: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+  
+  # Deviseのメッセージ
+  devise:
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報を変更しました。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+    failure:
+      invalid: "メールアドレスまたはパスワードが違います。"
+      unauthenticated: "ログインしてください。"
