@@ -2,16 +2,16 @@ ja:
   # 日付・時刻のフォーマット
   date:
     formats:
-      default: "$Y年%m月%d日"
-      long: "$Y年%m月%d日(%a)"
-      short: "$m月$d日"
-    time:
-      formats:
-        default: "$Y年%m月%d日 %H:%M"
-        long: "$Y年%m月%d日(%a) %H:%M"
-        short: "$m月$d日 %H:%M"
-    
-  # ActibeRecordのエラーメッセージ
+      default: "%Y年%m月%d日"
+      long: "%Y年%m月%d日(%a)"
+      short: "%m月%d日"
+  time:
+    formats:
+      default: "%Y年%m月%d日 %H:%M"
+      long: "%Y年%m月%d日(%a) %H:%M"
+      short: "%m月%d日 %H:%M"
+
+  # ActiveRecordのエラーメッセージ
   activerecord:
     errors:
       messages:
@@ -24,6 +24,7 @@ ja:
     # モデル名の日本語化
     models:
       user: "ユーザー"
+      shrine_record: "参拝記録"
     # 属性名の日本語化
     attributes:
       user:
@@ -31,7 +32,17 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード（確認用）"
-  
+      shrine_record:
+        shrine_name: "神社名"
+        deity: "御祭神"
+        benefit: "御利益"
+        visited_on: "参拝日"
+        wish: "お願いごと"
+        memo: "メモ"
+        latitude: "緯度"
+        longitude: "経度"
+        photo: "写真"
+
   # Deviseのメッセージ
   devise:
     registrations:
