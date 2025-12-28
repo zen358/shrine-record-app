@@ -1,4 +1,4 @@
-class AddUsernameToUsers < ActiveRecord::Migration[8.1]
+class AddUsernameToUsers < ActiveRecord::Migration[7.1]
   def change
     add_column :users, :username, :string, null: false, default: ""
     add_index :users, :username, unique: true

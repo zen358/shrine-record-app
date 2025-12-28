@@ -1,4 +1,4 @@
-class AddBenefitToRecords < ActiveRecord::Migration[8.1]
+class AddBenefitToRecords < ActiveRecord::Migration[7.1]
   def change
     add_column :shrine_records, :benefit, :string
   end
