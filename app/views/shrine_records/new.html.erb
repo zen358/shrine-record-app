@@ -1,5 +1,15 @@
 <%# 参拝記録 新規作成画面 %>
 <div class="container py-4">
+  <%# エラーメッセージをカードの外に表示 %>
+  <% if @shrine_record.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <% @shrine_record.errors.full_messages.each do |message| %>
+        <span><%= message %></span><br>
+      <% end %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
   <div class="row justify-content-center">
     <div class="col-md-8">
       <%# フォームカード %>

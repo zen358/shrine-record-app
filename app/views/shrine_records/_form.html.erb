@@ -1,18 +1,5 @@
 <%# 参拝記録フォーム（新規作成・編集共通） %>
 <%= form_with model: shrine_record, local: true do |f| %>
-  <%# エラーメッセージの表示 %>
-  <% if shrine_record.errors.any? %>
-    <div class="alert alert-danger">
-      <h5 class="alert-heading">
-        <%= shrine_record.errors.count %>件のエラーがあります
-      </h5>
-      <ul class="mb-0">
-        <% shrine_record.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <%# 神社名（必須） %>
   <div class="mb-3">
